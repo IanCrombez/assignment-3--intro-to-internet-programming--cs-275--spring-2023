@@ -27,7 +27,7 @@ let lintJS = () => {
 };
 
 let transpileJSForDev = () => {
-    return src(`js/*.js`)
+    return src(`scripts/*.js`)
         .pipe(babel())
         .pipe(dest(`temp/js`));
 };
@@ -48,7 +48,7 @@ let compileCSSForProd = () => {
 };
 
 let transpileJSForProd = () => {
-    return src(`js/*.js`)
+    return src(`scripts/*.js`)
         .pipe(babel())
         .pipe(jsCompressor())
         .pipe(dest(`prod/js`));
@@ -76,7 +76,7 @@ let serve = () => {
         }
     });
 
-    watch(`js/*.js`, series(lintJS, transpileJSForDev))
+    watch(`scripts/*.js`, series(lintJS, transpileJSForDev))
         .on(`change`, reload);
 
     watch(`styles/*.css`, series(lintCSS, copyUnprocessedAssetsForDev))
@@ -118,8 +118,8 @@ exports.copyUnprocessedAssetsForProd = copyUnprocessedAssetsForProd;
 exports.default = series(
     lintCSS,
     lintJS,
-    transpileJSForDev,
     copyUnprocessedAssetsForDev,
+    transpileJSForDev,
     serve
 
 );
