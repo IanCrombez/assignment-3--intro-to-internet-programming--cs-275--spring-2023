@@ -9,6 +9,7 @@ let breakpoint = `736`;
 
 //when the page starts preset everything
 window.onload = () => {
+    //start desktop
     if(viewportWidth > breakpoint)
     {
         root.style.setProperty(`--menu-top`, `0`);
@@ -17,6 +18,7 @@ window.onload = () => {
         root.style.setProperty(`--menu-position`, `center`);
     }
     else
+    //start phone
     {
         root.style.setProperty(`--menu-top`, `80px`);
         root.style.setProperty(`--menu-left`, `-130px`);
@@ -27,6 +29,7 @@ window.onload = () => {
 
 //real time resize things
 window.onresize  = () => {
+    //make for (desktop)
     if(window.innerWidth > breakpoint)
     {
         root.style.setProperty(`--menu-top`, `0`);
@@ -35,6 +38,7 @@ window.onresize  = () => {
         root.style.setProperty(`--menu-position`, `center`);
 
     }
+    //make for (phone)
     else
     {
         root.style.setProperty(`--menu-top`, `80px`);
@@ -81,9 +85,9 @@ bModal.addEventListener(`click`, () => {
             modalPanel.style.display = `none`;
         }
     });
-
     let modalContentPane = modalPanel.getElementsByClassName(`modal-content-pane`)[0];
-    modalContentPane.addEventListener(`click`, (event) => { //stops bubbling of event
+    //stops bad things 'bubble' do not remove for any reason
+    modalContentPane.addEventListener(`click`, (event) => {
         event.stopPropagation();
     });
     //make the mouse close the modal
