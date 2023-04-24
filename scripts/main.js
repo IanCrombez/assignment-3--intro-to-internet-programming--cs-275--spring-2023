@@ -27,17 +27,7 @@ window.onload = () => {
 
 //real time resize things
 window.onresize  = () => {
-    viewportWidth = window.innerWidth;
-    if(viewportWidth <= breakpoint &&  window.innerWidth > breakpoint)
-    {
-        root.style.setProperty(`--transition-duration`, `0ms`);
-        root.style.setProperty(`--menu-top`, `0`);
-        setTimeout(() => {
-            root.style.setProperty(`--transition-duration`, `500ms`);
-        }, 20);
-
-    }
-    else if(window.innerWidth > breakpoint)
+    if(window.innerWidth > breakpoint)
     {
         root.style.setProperty(`--menu-top`, `0`);
         root.style.setProperty(`--menu-left`, `inherit`);
@@ -52,6 +42,7 @@ window.onresize  = () => {
         root.style.setProperty(`--menu-style`, `block`);
         root.style.setProperty(`--menu-position`, `left`);
     }
+    viewportWidth = window.innerWidth;
 };
 //button for the menu and the actovation and deactivation
 bMenu.addEventListener(`click`, () => {
