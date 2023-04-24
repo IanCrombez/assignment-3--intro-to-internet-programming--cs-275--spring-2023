@@ -51,7 +51,6 @@ bMenu.addEventListener(`click`, () => {
         if(root.style.getPropertyValue(`--menu-top`) !== `0`)
         {
             root.style.setProperty(`--menu-top`, `0`);
-
         }
         else
         {
@@ -81,13 +80,11 @@ bModal.addEventListener(`click`, () => {
         {
             modalPanel.style.display = `none`;
         }
-
     });
 
     let modalContentPane = modalPanel.getElementsByClassName(`modal-content-pane`)[0];
     modalContentPane.addEventListener(`click`, (event) => { //stops bubbling of event
         event.stopPropagation();
-
     });
     //make the mouse close the modal
     modalPanel.addEventListener(`click`, (event) => {
